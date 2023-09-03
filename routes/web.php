@@ -29,4 +29,5 @@ Route::middleware(['auth'])->group ( function() {
 
 
 } );
+
 Route::resource('course',CourseController::class);

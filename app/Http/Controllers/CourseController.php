@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,6 @@ class CourseController extends Controller
     'end'=>'required',
     'time'=>'required',
     'Target_group'=>'required',
-    'status'=>'required',
     'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
@@ -91,7 +91,6 @@ class CourseController extends Controller
             'end'=>'required',
             'time'=>'required',
             'Target_group'=>'required',
-            'status'=>'required',
 
             ]);
         

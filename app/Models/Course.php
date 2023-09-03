@@ -17,9 +17,6 @@ class Course extends Model
         'end',
         'time',
         'Target_group',
-        'status',
-        'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
-
     ];
 
 

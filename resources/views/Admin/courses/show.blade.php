@@ -33,7 +33,6 @@
             <th>end</th>
             <th>time</th>
             <th>Target group</th>
-            <th>status</th>
             <th>Action</th>
           </tr>
           </thead>
@@ -52,7 +51,6 @@
               <td>{{ $item->end }}</td>
               <td>{{ $item->time }}</td>
               <td>{{ $item->Targetgroup }}</td>
-              <td>{{ $item->status }}</td>
               <td>
                 <form action="{{ route('courses.destroy',$item->id) }}" method="post">
                 @csrf

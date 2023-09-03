@@ -66,14 +66,7 @@
     <input type="text"
       class="form-control" name="Target_group">
   </div>
-  <div class="mb-3">
-    <label for="">status:</label>
-  <select class="form-control" name="status"    >
-    <option value="0"> Visible</option>
-    <option value="1">Hidden</option>
-</select>
-</div>
-
+  
 <div class="mb-3">
     <label for="">image:</label>
   <input type="file" class="form-control"  name="image" >
