@@ -1,545 +1,374 @@
 @extends('Admin.layouts.App')
 @section('content')
-   <!-- Content wrapper -->
-   <div class="content-wrapper">
-    <!-- Content -->
-{{-- added hello --}}
-    <h1> hello</h1>
-    <div class="container-xxl flex-grow-1 container-p-y">
-      <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-          <div class="card">
-            <div class="d-flex align-items-end row">
-              <div class="col-sm-7">
-                <div class="card-body">
-                  <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                  <p class="mb-4">
-                    You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                    your profile.
-                  </p>
 
-                  <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                </div>
-              </div>
-              <div class="col-sm-5 text-center text-sm-left">
-                <div class="card-body pb-0 px-0 px-md-4">
-                  <img
-                    src="{{ asset('Admin/assets/img/illustrations/man-with-laptop-light.png') }}"
-                    height="140"
-                    alt="View Badge User"
-                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                    data-app-light-img="illustrations/man-with-laptop-light.png"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+<!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Admin Wrap</p>
         </div>
-        <div class="col-lg-4 col-md-4 order-1">
-          <div class="row">
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img
-                        src="{{ asset('Admin/assets/img/icons/unicons/chart-success.png') }}"
-                        alt="chart success"
-                        class="rounded"
-                      />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt3"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="fw-semibold d-block mb-1">Profit</span>
-                  <h3 class="card-title mb-2">$12,628</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img
-                        src="{{ asset('Admin/assets/img/icons/unicons/wallet-info.png') }}"
-                        alt="Credit Card"
-                        class="rounded"
-                      />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt6"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-
-                      </div>
-                    </div>
-                  </div>
-                  <span>Sales</span>
-                  <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-          <div class="card">
-            <div class="row row-bordered g-0">
-              <div class="col-md-8">
-                <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                <div id="totalRevenueChart" class="px-2"></div>
-              </div>
-              <div class="col-md-4">
-                <div class="card-body">
-                  <div class="text-center">
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-sm btn-outline-primary dropdown-toggle"
-                        type="button"
-                        id="growthReportId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        2022
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="growthChart"></div>
-                <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-                <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                  <div class="d-flex">
-                    <div class="me-2">
-                      <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <small>2022</small>
-                      <h6 class="mb-0">$32.5k</h6>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <div class="me-2">
-                      <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <small>2021</small>
-                      <h6 class="mb-0">$41.2k</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--/ Total Revenue -->
-        <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-          <div class="row">
-            <div class="col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img src="{{ asset('Admin/assets/img/icons/unicons/paypal.png') }}" alt="Credit Card" class="rounded" />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt4"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="d-block mb-1">Payments</span>
-                  <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                  <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img src="{{ asset('Admin/assets/img/icons/unicons/cc-primary.png') }}" alt="Credit Card" class="rounded" />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt1"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="fw-semibold d-block mb-1">Transactions</span>
-                  <h3 class="card-title mb-2">$14,857</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                </div>
-              </div>
-            </div>
-            <!-- </div>
-<div class="row"> -->
-            <div class="col-12 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                    <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                      <div class="card-title">
-                        <h5 class="text-nowrap mb-2">Profile Report</h5>
-                        <span class="badge bg-label-warning rounded-pill">Year 2021</span>
-                      </div>
-                      <div class="mt-sm-auto">
-                        <small class="text-success text-nowrap fw-semibold"
-                          ><i class="bx bx-chevron-up"></i> 68.2%</small
-                        >
-                        <h3 class="mb-0">$84,686k</h3>
-                      </div>
-                    </div>
-                    <div id="profileReportChart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Order Statistics -->
-        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-          <div class="card h-100">
-            <div class="card-header d-flex align-items-center justify-content-between pb-0">
-              <div class="card-title mb-0">
-                <h5 class="m-0 me-2">Order Statistics</h5>
-                <small class="text-muted">42.82k Total Sales</small>
-              </div>
-              <div class="dropdown">
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                  <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="d-flex flex-column align-items-center gap-1">
-                  <h2 class="mb-2">8,258</h2>
-                  <span>Total Orders</span>
-                </div>
-                <div id="orderStatisticsChart"></div>
-              </div>
-              <ul class="p-0 m-0">
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-primary"
-                      ><i class="bx bx-mobile-alt"></i
-                    ></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Electronic</h6>
-                      <small class="text-muted">Mobile, Earbuds, TV</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">82.5k</small>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Fashion</h6>
-                      <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">23.8k</small>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Decor</h6>
-                      <small class="text-muted">Fine Art, Dining</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">849k</small>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-secondary"
-                      ><i class="bx bx-football"></i
-                    ></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Sports</h6>
-                      <small class="text-muted">Football, Cricket Kit</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">99</small>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!--/ Order Statistics -->
-
-        <!-- Expense Overview -->
-        <div class="col-md-6 col-lg-4 order-1 mb-4">
-          <div class="card h-100">
-            <div class="card-header">
-              <ul class="nav nav-pills" role="tablist">
-                <li class="nav-item">
-                  <button
-                    type="button"
-                    class="nav-link active"
-                    role="tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#navs-tabs-line-card-income"
-                    aria-controls="navs-tabs-line-card-income"
-                    aria-selected="true"
-                  >
-                    Income
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link" role="tab">Expenses</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link" role="tab">Profit</button>
-                </li>
-              </ul>
-            </div>
-            <div class="card-body px-0">
-              <div class="tab-content p-0">
-                <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-                  <div class="d-flex p-4 pt-3">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <img src="{{ asset('Admin/assets/img/icons/unicons/wallet.png') }}" alt="User" />
-                    </div>
-                    <div>
-                      <small class="text-muted d-block">Total Balance</small>
-                      <div class="d-flex align-items-center">
-                        <h6 class="mb-0 me-1">$459.10</h6>
-                        <small class="text-success fw-semibold">
-                          <i class="bx bx-chevron-up"></i>
-                          42.9%
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="incomeChart"></div>
-                  <div class="d-flex justify-content-center pt-4 gap-2">
-                    <div class="flex-shrink-0">
-                      <div id="expensesOfWeek"></div>
-                    </div>
-                    <div>
-                      <p class="mb-n1 mt-1">Expenses This Week</p>
-                      <small class="text-muted">$39 less than last week</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--/ Expense Overview -->
-
-        <!-- Transactions -->
-        <div class="col-md-6 col-lg-4 order-2 mb-4">
-          <div class="card h-100">
-            <div class="card-header d-flex align-items-center justify-content-between">
-              <h5 class="card-title m-0 me-2">Transactions</h5>
-              <div class="dropdown">
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="transactionID"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                  <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <ul class="p-0 m-0">
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('Admin/assets/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Paypal</small>
-                      <h6 class="mb-0">Send money</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+82.6</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('Admin/assets/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Wallet</small>
-                      <h6 class="mb-0">Mac'D</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+270.69</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('Admin/assets/img/icons/unicons/chart.png') }}" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Transfer</small>
-                      <h6 class="mb-0">Refund</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+637.91</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('Admin/assets/img/icons/unicons/cc-success.png') }}" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Credit Card</small>
-                      <h6 class="mb-0">Ordered Food</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">-838.71</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('Admin/assets/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Wallet</small>
-                      <h6 class="mb-0">Starbucks</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+203.33</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('Admin/assets/img/icons/unicons/cc-warning.png') }}" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Mastercard</small>
-                      <h6 class="mb-0">Ordered Food</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">-92.45</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!--/ Transactions -->
-      </div>
     </div>
-    <!-- / Content -->
-
-
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->
+                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+             
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            {{-- <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="" /> <span class="hidden-md-down">Mark Sanders &nbsp;</span> </a> --}}
+                            <div  class=" py-4 px-lg-5 d-none d-lg-block"  >
+                                @if (Route::has('login'))
+                                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                                    @auth
+                                    {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> --}}
+                                        <a href="{{ route('logout') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">logout</a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                                        @if (Route::has('register'))
+                                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                        @endif
+                                    @endauth
+                                </div>
+                            @endif
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Icons</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Map</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Blank</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
+                        </li>
+                    </ul>
+                    <div class="text-center m-t-30">
+                        <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn-info hidden-md-down"> Upgrade to Pro</a>
+                    </div>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Dashboard</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down"> Upgrade to Pro</a>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Sales Chart and browser state-->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex no-block">
+                                    <div>
+                                        <h5 class="card-title m-b-0">Sales Chart</h5>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <ul class="list-inline text-center font-12">
+                                            <li><i class="fa fa-circle text-success"></i> SITE A</li>
+                                            <li><i class="fa fa-circle text-info"></i> SITE B</li>
+                                            <li><i class="fa fa-circle text-primary"></i> SITE C</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="" id="sales-chart" style="height: 355px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex m-b-30 no-block">
+                                    <h5 class="card-title m-b-0 align-self-center">Our Visitors</h5>
+                                    <div class="ml-auto">
+                                        <select class="custom-select b-0">
+                                            <option selected="">Today</option>
+                                            <option value="1">Tomorrow</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="visitor" style="height:260px; width:100%;"></div>
+                                <ul class="list-inline m-t-30 text-center font-12">
+                                    <li><i class="fa fa-circle text-purple"></i> Tablet</li>
+                                    <li><i class="fa fa-circle text-success"></i> Desktops</li>
+                                    <li><i class="fa fa-circle text-info"></i> Mobile</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Sales Chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Projects of the Month -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="card-title">Projects of the Month</h5>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <select class="custom-select b-0">
+                                            <option selected="">January</option>
+                                            <option value="1">February</option>
+                                            <option value="2">March</option>
+                                            <option value="3">April</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-responsive m-t-20 no-wrap">
+                                    <table class="table vm no-th-brd pro-of-month">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Assigned</th>
+                                                <th>Name</th>
+                                                <th>Budget</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:50px;"><span class="round">S</span></td>
+                                                <td>
+                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small></td>
+                                                <td>Elite Admin</td>
+                                                <td>$3.9K</td>
+                                            </tr>
+                                            <tr class="active">
+                                                <td><span class="round"><img src="assets/images/users/2.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small></td>
+                                                <td>Real Homes</td>
+                                                <td>$23.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-success">B</span></td>
+                                                <td>
+                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small></td>
+                                                <td>MedicalPro Theme</td>
+                                                <td>$12.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-primary">N</span></td>
+                                                <td>
+                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small></td>
+                                                <td>Elite Admin</td>
+                                                <td>$10.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-warning">M</span></td>
+                                                <td>
+                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small></td>
+                                                <td>Helping Hands</td>
+                                                <td>$12.9K</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="up-img" style="background-image:url(assets/images/big/img1.jpg)"></div>
+                            <div class="card-body">
+                                <h5 class=" card-title">Business development of rules</h5>
+                                <span class="label label-info label-rounded">Technology</span>
+                                <p class="m-b-0 m-t-20">Titudin venenatis ipsum aciat. Vestibu ullamer quam. nenatis ipsum ac feugiat. Ibulum ullamcorper.</p>
+                                <div class="d-flex m-t-20">
+                                    <a class="link" href="javascript:void(0)">Read more</a>
+                                    <div class="ml-auto align-self-center">
+                                        <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart-o"></i></a>
+                                        <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-share-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Projects of the Month -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Notification And Feeds -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Start Notification -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card card-body mailbox">
+                            <h5 class="card-title">Notification</h5>
+                            <div class="message-center ps ps--theme_default ps--active-y" data-ps-id="a045fe3c-cb6e-028e-3a70-8d6ff0d7f6bd">
+                                <!-- Message -->
+                                <a href="#">
+                                    <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
+                                    <div class="mail-contnet">
+                                        <h5>Luanch Admin</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span> </div>
+                                </a>
+                                <!-- Message -->
+                                <a href="#">
+                                    <div class="btn btn-success btn-circle"><i class="fa fa-calendar-check-o"></i></div>
+                                    <div class="mail-contnet">
+                                        <h5>Event today</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span> </div>
+                                </a>
+                                <!-- Message -->
+                                <a href="#">
+                                    <div class="btn btn-info btn-circle"><i class="fa fa-cog"></i></div>
+                                    <div class="mail-contnet">
+                                        <h5>Settings</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span> </div>
+                                </a>
+                                <!-- Message -->
+                                <a href="#">
+                                    <div class="btn btn-primary btn-circle"><i class="fa fa-user"></i></div>
+                                    <div class="mail-contnet">
+                                        <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Notification -->
+                    <!-- Start Feeds -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Feeds</h5>
+                                <ul class="feeds">
+                                    <li>
+                                        <div class="bg-light-info"><i class="fa fa-bell-o"></i></div> You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
+                                    <li>
+                                        <div class="bg-light-success"><i class="fa fa-server"></i></div> Server #1 overloaded.<span class="text-muted">2 Hours ago</span></li>
+                                    <li>
+                                        <div class="bg-light-warning"><i class="fa fa-shopping-cart"></i></div> New order received.<span class="text-muted">31 May</span></li>
+                                    <li>
+                                        <div class="bg-light-danger"><i class="fa fa-user"></i></div> New user registered.<span class="text-muted">30 May</span></li>
+                                    <li>
+                                        <div class="bg-light-inverse"><i class="fa fa-bell-o"></i></div> New Version just arrived. <span class="text-muted">27 May</span></li>
+                                    <li>
+                                        <div class="bg-light-info"><i class="fa fa-bell-o"></i></div> You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
+                                    <li>
+                                        <div class="bg-light-danger"><i class="fa fa-user"></i></div> New user registered.<span class="text-muted">30 May</span></li>
+                                    <li>
+                                        <div class="bg-light-inverse"><i class="fa fa-bell-o"></i></div> New Version just arrived. <span class="text-muted">27 May</span></li>
+                                    <li>
+                                        <div class="bg-light-primary"><i class="fa fa-cog"></i></div> You have 4 pending tasks. <span class="text-muted">27 May</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Feeds -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Notification And Feeds -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Page Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
 @endsection

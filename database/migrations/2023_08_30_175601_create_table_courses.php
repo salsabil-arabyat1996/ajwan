@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_courses', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('description');
@@ -23,11 +23,11 @@ return new class extends Migration
             $table->date('time');
             $table->unsignedBigInteger('category_id');
             $table->string('Target group');
-            $table->tinyInteger('status')->default('0')->comment('1=hidden,0=visible');
+            $table->tinyInteger('status')->default(0)->comment('1=hidden,0=visible');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('table_categores')->onDelete('cascade');
 
-
+            // Fix the foreign key reference to 'categories' table
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_courses');
+        Schema::dropIfExists('courses');
     }
 };

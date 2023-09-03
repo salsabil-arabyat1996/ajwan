@@ -23,6 +23,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('User.Home');
+        if (auth()->check()) {
+            $role = auth()->user()->role_as;
+
+            if ($role == 0) {
+                return view('User.Home');
+            } elseif ($role == 1) {
+                return view('Admin.index');
+            }
+        }
+
+        // Handle other cases (e.g., user not authenticated or invalid role)
+        return redirect('/'); // Redirect to a default page
     }
 }
