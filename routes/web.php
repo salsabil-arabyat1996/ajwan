@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('User.Home');
+    return view('Admin.index');
 });
 
+// Route::get('/', function () {
+//     return view('User.Home');
+// });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('User.Home');
 // Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::middleware(['auth'])->group ( function() {
 
 
+} );
+Route::resource('course',CourseController::class);
