@@ -27,7 +27,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Fix the foreign key reference to 'categories' table
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categores')->onDelete('cascade');
         });
     }
 
