@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('teacher name');
             $table->string('description');
             $table->integer('price');
             $table->string('image');
@@ -25,8 +26,8 @@ return new class extends Migration
             $table->string('Target group');
             $table->tinyInteger('status')->default(0)->comment('1=hidden,0=visible');
             $table->timestamps();
-
-            // Fix the foreign key reference to 'categories' table
+        
+            // Define the foreign key constraint
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
