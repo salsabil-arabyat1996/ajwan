@@ -41,7 +41,6 @@ class CourseController extends Controller
     'end'=>'required',
     'time'=>'required',
     'Target_group'=>'required',
-    'status'=>'required',
     'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
@@ -91,7 +90,6 @@ class CourseController extends Controller
             'end'=>'required',
             'time'=>'required',
             'Target_group'=>'required',
-            'status'=>'required',
 
             ]);
 
@@ -105,7 +103,6 @@ class CourseController extends Controller
                 unset( $input['image']);
             }
             $course->update($input);
-
            return redirect()->route('Admin.courses.index')->with('success','course updated successfuly');
     }
 

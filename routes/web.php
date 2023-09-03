@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 
+use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('User.Home');
+    return view('Admin.index');
 });
 
 // Route::get('/', function () {

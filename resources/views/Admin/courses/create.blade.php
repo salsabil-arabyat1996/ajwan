@@ -5,7 +5,6 @@
         <div class="col">
        <a  class="btn btn-primary" href="{{ route('course.index') }}">Back</a>
         </div>
-
       </div>
 
       @if ($errors->any())
