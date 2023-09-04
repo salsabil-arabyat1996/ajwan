@@ -19,13 +19,13 @@ use App\Http\Controllers\CourseController;
 |
 */
 
-Route::get('/', function () {
-    return view('Admin.index');
-});
-
 // Route::get('/', function () {
-//     return view('User.Home');
+//     return view('Admin.index');
 // });
+
+ Route::get('/', function () {
+    return view('User.Home');
+ });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('User.Home');
