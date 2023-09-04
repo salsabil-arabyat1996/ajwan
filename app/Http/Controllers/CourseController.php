@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 class CourseController extends Controller
 {
@@ -12,7 +14,7 @@ class CourseController extends Controller
     public function index()
     {
 
-        $courses = Course::latest();
+        $courses = Course::all();
         return view('Admin.courses.index',compact('courses'));
 
     }
@@ -22,7 +24,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('Admin.courses.create');
+        $categories = Category::all();
+        return view('Admin.courses.create',['categories' => $categories]);
     }
 
     /**
@@ -30,31 +33,49 @@ class CourseController extends Controller
 
      */
     public function store(Request $request)
-    {
-
+{
     $request->validate([
-    'title'=>'required',
-    'description'=>'required',
-    'price'=>'required',
-    'location'=>'required',
-    'start'=>'required',
-    'end'=>'required',
-    'time'=>'required',
-    'Target_group'=>'required',
-    'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
+        'title' => 'required',
+        'description' => 'required',
+        'price' => 'required',
+        'location' => 'required',
+        'start' => 'required',
+        'end' => 'required',
+        'time' => 'required',
+        // 'Target_group'=>'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    $input = $request ->all();
-    if ($image = $request->file('image')) {
-        $destinationPath ='imagess';
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        $image->move($destinationPath , $imageName);
-        $input['image'] ="$imageName";
-    }
-    Course::create($input);
-   return redirect()->route('Admin.courses.index')->with('success','course added successfuly');
+    $input = $request->all();
+$category_id = $request->input('category_id');
 
+    // Create a new Course instance
+    $course = new Course();
+
+    if ($request->hasFile('image')) {
+        $profileImg = $request->file('image');
+        $profileImgPath = Storage::disk('public')->put('images', $profileImg);
+        $course->image = $profileImgPath;
     }
+
+    // Set other properties
+    $course->title = $input['title'];
+    $course->description = $input['description'];
+    $course->price = $input['price'];
+    $course->location = $input['location'];
+    $course->start = $input['start'];
+    $course->end = $input['end'];
+    $course->time = $input['time'];
+    $course->Target_group = $input['Target_group'];
+    $course->teacher_name = $input['teacher_name'];
+    // Set other properties as needed
+$course->category_id = $category_id;
+    // Save the course to the database
+    $course->save();
+
+    return redirect()->route('Admin.courses.index')->with('success','course added successfuly');
+}
+
 
     /**
      * Display the specified resource.
@@ -67,10 +88,19 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
-    {
-        return view('Admin.courses.edit',compact('course'));
+    public function edit($id)
+{
+    $course = Course::find($id);
+    if (!$course) {
+        abort(404); // Handle the case when the course is not found
     }
+
+    // You can also load categories if needed
+    $categories = Category::all();
+
+    return view('Admin.courses.edit', compact('course', 'categories'));
+}
+
 
     /**
      * Update the specified resource in storage.
@@ -94,14 +124,12 @@ class CourseController extends Controller
             ]);
 
             $input = $request ->all();
-            if ($image = $request->file('image')) {
-                $destinationPath ='imagess';
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move($destinationPath , $imageName);
-                $input['image'] ="$imageName";
-            } else{
-                unset( $input['image']);
+            if ($request->hasFile('image')) {
+                $profileImg = $request->file('image');
+                $profileImgPath = Storage::disk('public')->put('images', $profileImg);
+                $course->image = $profileImgPath;
             }
+        
             $course->update($input);
            return redirect()->route('Admin.courses.index')->with('success','course updated successfuly');
     }

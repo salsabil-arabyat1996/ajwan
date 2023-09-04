@@ -29,6 +29,11 @@
     class="form-control" name="title"  >
 </div>
 <div class="mb-3">
+    <label for="">teacher_name:</label>
+  <input type="text"
+    class="form-control" name="teacher_name"  >
+</div>
+<div class="mb-3">
     <label for="">description:</label>
   <textarea class="form-control" name="description"   rows="3"></textarea>
 </div>
@@ -72,6 +77,16 @@
     <option value="1">Hidden</option>
 </select>
 </div>
+<div class="mb-3">
+  <label for="category_id">Category</label>
+  <select class="form-control" name="category_id" id="category_id">
+      <option value="0">Select a Category</option>
+      @foreach ($categories as $category)
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
+      @endforeach
+  </select>
+</div>
+
 
 <div class="mb-3">
     <label for="">image:</label>

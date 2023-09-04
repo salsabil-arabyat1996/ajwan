@@ -18,6 +18,11 @@ class Course extends Model
         'time',
         'Target_group',
     ];
+// Course.php (or your model file)
+public function category()
+{
+    return $this->belongsTo(Category::class);
+}
 
 
 }
