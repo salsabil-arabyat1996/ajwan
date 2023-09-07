@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class CourseController extends Controller
 {
     /**
@@ -11,9 +11,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-
-        $courses = Course::latest();
-        return view('Admin.courses.index',compact('courses'));
+     
+        $courses = Course::all();
+        $categories = Category::pluck('name', 'id');
+        return view('Admin.courses.index',compact('courses', 'categories'));
 
     }
 
@@ -22,7 +23,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('Admin.courses.create');
+        $categories = Category::pluck('name', 'id');
+
+        return view('Admin.courses.create', compact('categories'));
     }
 
     /**
@@ -34,6 +37,7 @@ class CourseController extends Controller
 
     $request->validate([
     'title'=>'required',
+    'teacher_name'=>'required',
     'description'=>'required',
     'price'=>'required',
     'location'=>'required',
@@ -41,7 +45,10 @@ class CourseController extends Controller
     'end'=>'required',
     'time'=>'required',
     'Target_group'=>'required',
+    'status'=>'required',
+    'category_id'=>'required',
     'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
+    
     ]);
 
     $input = $request ->all();
@@ -52,7 +59,7 @@ class CourseController extends Controller
         $input['image'] ="$imageName";
     }
     Course::create($input);
-   return redirect()->route('Admin.courses.index')->with('success','course added successfuly');
+   return redirect()->route('course.index')->with('success','course added successfuly');
 
     }
 
@@ -69,7 +76,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('Admin.courses.edit',compact('course'));
+        $categories = Category::pluck('name', 'id');
+        return view('Admin.courses.edit',compact('course','categories'));
     }
 
     /**
@@ -82,13 +90,16 @@ class CourseController extends Controller
 
         $request->validate([
             'title'=>'required',
+            'teacher_name'=>'required',
             'description'=>'required',
             'price'=>'required',
-            'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
             'location'=>'required',
             'start'=>'required',
             'end'=>'required',
             'time'=>'required',
+            'status'=>'required',
+            'category_id'=>'required',
             'Target_group'=>'required',
 
             ]);
@@ -103,7 +114,7 @@ class CourseController extends Controller
                 unset( $input['image']);
             }
             $course->update($input);
-           return redirect()->route('Admin.courses.index')->with('success','course updated successfuly');
+           return redirect()->route('course.index')->with('success','course updated successfuly');
     }
 
     /**
@@ -112,6 +123,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course ->delete();
-        return redirect()->route('Admin.courses.index')->with('success','course delete successfuly');
+        return redirect()->route('course.index')->with('success','course delete successfuly');
     }
 }
