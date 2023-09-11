@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\HasOne;
 class Category extends Model
 {
     use HasFactory;
@@ -19,4 +19,10 @@ class Category extends Model
     {
         return $this->hasMany(Course::class);
     }
+
+    public function course(): HasOne
+    {
+        return $this->hasOne(Course::class);
+    }
+
 }

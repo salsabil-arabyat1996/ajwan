@@ -1,68 +1,105 @@
 @extends('Admin.layouts.App')
 @section('content')
+<<<<<<< HEAD
 
+<style>
+    /* Sidebar dropdown menu */
+.nav.flex-column.sub-menu {
+    padding-left: 20px; /* Adjust the left padding as needed */
+}
+
+.nav-item {
+    position: relative;
+}
+
+/* Style the dropdown trigger */
+.nav-item a.nav-link i.menu-arrow::before {
+    content: '\25B8'; /* Right-pointing triangle */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right spacing as needed */
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+}
+
+/* Rotate the dropdown trigger arrow when expanded */
+.nav-item a.nav-link[aria-expanded="true"] i.menu-arrow::before {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Style the dropdown items */
+.nav-item .nav-link {
+    padding: 5px 0;
+    color: #555; /* Text color */
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+/* Hover effect for dropdown items */
+.nav-item .nav-link:hover {
+    color: #007bff; /* Highlight color on hover */
+}
+
+/* Style the parent item (Category) */
+.nav-item > a.nav-link {
+    padding: 10px 20px; /* Adjust the padding as needed */
+    font-weight: bold;
+}
+
+/* Add a border to separate dropdown items */
+.nav-item .nav-link:not(:last-child) {
+    border-bottom: 1px solid #ddd; /* Border color */
+}
+
+/* Style the top-level sidebar links (Dashboard, Profile, etc.) */
+.nav-item > a.nav-link i.menu-arrow {
+    display: none; /* Hide the arrow for top-level items */
+}
+
+/* Adjust the arrow position for top-level items */
+.nav-item > a.nav-link span.menu-title {
+    padding-left: 15px; /* Adjust the left spacing as needed */
+}
+
+    </style>
 <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
+=======
+>>>>>>> 0bd37bee5a883b9b046c57857f289bc062819ac9
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
             <p class="loader__label">Admin Wrap</p>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                         <!-- dark Logo text -->
-                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                         <!-- Light Logo text -->
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                      <h1>Ajwan</h1>
                 </div>
-             
+<<<<<<< HEAD
+
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
+=======
+>>>>>>> 0bd37bee5a883b9b046c57857f289bc062819ac9
                 <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
+                        
                         <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
                         </li>
                     </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
+                 
                     <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
+                       
                         <li class="nav-item dropdown u-pro">
                             {{-- <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="" /> <span class="hidden-md-down">Mark Sanders &nbsp;</span> </a> --}}
                             <div  class=" py-4 px-lg-5 d-none d-lg-block"  >
@@ -84,21 +121,38 @@
                 </div>
             </nav>
         </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+      
         <aside class="left-sidebar">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="mdi mdi-circle-outline menu-icon"></i>
+                                <span class="menu-title">Category</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <!-- Dropdown menu -->
+                            <div class="collapse" id="ui-basic">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Add Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">View Category</a>
+                                    </li>
+                                    <!-- Add more dropdown items here if needed -->
+                                </ul>
+                            </div>
                         </li>
+<<<<<<< HEAD
+
                         <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+=======
+                        <li> <a class="waves-effect waves-dark" href="{{ route('course.index') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Courses</span></a>
+>>>>>>> 0bd37bee5a883b9b046c57857f289bc062819ac9
                         </li>
                         <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
                         </li>
@@ -112,27 +166,15 @@
                         </li>
                     </ul>
                     <div class="text-center m-t-30">
-                        <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn-info hidden-md-down"> Upgrade to Pro</a>
                     </div>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
+        
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
                         <h3 class="text-themecolor">Dashboard</h3>
@@ -142,15 +184,8 @@
                         </ol>
                     </div>
                     <div class="col-md-7 align-self-center">
-                        <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down"> Upgrade to Pro</a>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Sales Chart and browser state-->
-                <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-8">
@@ -195,12 +230,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Sales Chart -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Projects of the Month -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-8">
@@ -290,12 +319,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Projects of the Month -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Notification And Feeds -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <!-- Start Notification -->
                     <div class="col-lg-6 col-md-12">
@@ -360,15 +383,6 @@
                     </div>
                     <!-- End Feeds -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Notification And Feeds -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- End Page Content -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
+ 
 @endsection

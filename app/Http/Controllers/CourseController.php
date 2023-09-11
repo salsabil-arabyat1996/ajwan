@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
+
+=======
 use App\Models\Category;
 
 class CourseController extends Controller
@@ -14,8 +18,10 @@ class CourseController extends Controller
     public function index()
     {
 
+     
         $courses = Course::all();
-        return view('Admin.courses.index',compact('courses'));
+        $categories = Category::pluck('name', 'id');
+        return view('Admin.courses.index',compact('courses', 'categories'));
 
     }
 
@@ -24,8 +30,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('Admin.courses.create',['categories' => $categories]);
+
+        $categories = Category::pluck('name', 'id');
+
+        return view('Admin.courses.create', compact('categories'));
     }
 
     /**
@@ -35,19 +43,34 @@ class CourseController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'title' => 'required',
-        'description' => 'required',
-        'price' => 'required',
-        'location' => 'required',
-        'start' => 'required',
-        'end' => 'required',
-        'time' => 'required',
-        // 'Target_group'=>'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+
+$category_id = $request->input('category_id');
+      
+    'title'=>'required',
+    'teacher_name'=>'required',
+    'description'=>'required',
+    'price'=>'required',
+    'location'=>'required',
+    'start'=>'required',
+    'end'=>'required',
+    'time'=>'required',
+    'Target_group'=>'required',
+    'status'=>'required',
+    'category_id'=>'required',
+    'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
+    
     ]);
 
-    $input = $request->all();
-$category_id = $request->input('category_id');
+    $input = $request ->all();
+    if ($image = $request->file('image')) {
+        $destinationPath ='imagess';
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $image->move($destinationPath , $imageName);
+        $input['image'] ="$imageName";
+    }
+    Course::create($input);
+   return redirect()->route('course.index')->with('success','course added successfuly');
 
     // Create a new Course instance
     $course = new Course();
@@ -88,11 +111,11 @@ $course->category_id = $category_id;
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-{
-    $course = Course::find($id);
-    if (!$course) {
-        abort(404); // Handle the case when the course is not found
+
+    public function edit(Course $course)
+    {
+        $categories = Category::pluck('name', 'id');
+        return view('Admin.courses.edit',compact('course','categories'));
     }
 
     // You can also load categories if needed
@@ -112,13 +135,16 @@ $course->category_id = $category_id;
 
         $request->validate([
             'title'=>'required',
+            'teacher_name'=>'required',
             'description'=>'required',
             'price'=>'required',
-            'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'image'=>'required |image|mimes:jpeg,png,jpg,gif|max:2048',
             'location'=>'required',
             'start'=>'required',
             'end'=>'required',
             'time'=>'required',
+            'status'=>'required',
+            'category_id'=>'required',
             'Target_group'=>'required',
 
             ]);
@@ -131,7 +157,7 @@ $course->category_id = $category_id;
             }
         
             $course->update($input);
-           return redirect()->route('Admin.courses.index')->with('success','course updated successfuly');
+           return redirect()->route('course.index')->with('success','course updated successfuly');
     }
 
     /**
@@ -140,6 +166,6 @@ $course->category_id = $category_id;
     public function destroy(Course $course)
     {
         $course ->delete();
-        return redirect()->route('Admin.courses.index')->with('success','course delete successfuly');
+        return redirect()->route('course.index')->with('success','course delete successfuly');
     }
 }

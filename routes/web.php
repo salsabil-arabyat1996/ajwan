@@ -10,6 +10,11 @@ use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\CourseController;
 use App\Models\Course;
+use App\Http\Controllers\Auth\ProtectionController;
+use App\Http\Controllers\SinglePageController;
+use App\Http\Controllers\CourseController;
+use App\Models\Course;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +27,27 @@ use App\Models\Course;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Admin.index');
-// });
 
 Route::get('/', function () {
     return view('User.Home');
 });
 
-Auth::routes();
+ Route::get('/', function () {
+    $courses = Course::all();
+    $categories = Category::pluck('name', 'id');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('User.Home');
+    return view('User.Home',compact('courses', 'categories'));
+ });
+Auth::routes();
+Route::get('/dashboard', [ProtectionController::class, 'index'])->name('dashboard');
+Route::get('/home', [ProtectionController::class, 'index'])->name('User.Home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //  Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::match(['GET', 'POST'], '/logout', function () {
     Auth::logout();
-    return redirect('/');
+    return redirect('/login');
 })->name('logout');
 Route::middleware(['auth'])->group ( function() {
 
@@ -86,3 +95,4 @@ Route::put('/admin/courses/{course}', [CourseController::class, 'update'])->name
 
 // Remove the specified resource from storage
 Route::delete('/admin/courses/{course}', [CourseController::class, 'destroy'])->name('courses.destroy');
+Route::resource('single', SinglePageController::class);
