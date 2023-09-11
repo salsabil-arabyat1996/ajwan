@@ -22,11 +22,8 @@ class Course extends Model
         'category_id',
         'status',
     ];
-  /**
-     * Get the user that owns the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'categore_id');
