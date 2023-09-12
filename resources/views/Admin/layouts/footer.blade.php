@@ -1,18 +1,4 @@
 <footer class="footer"> © 2018 Adminwrap by wrappixel.com </footer>
-<!-- ============================================================== -->
-<!-- End footer -->
-<!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
 <script src="{{ asset('Admin/assets/node_modules/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap popper Core JavaScript -->
 <script src="{{ asset('Admin/assets/node_modules/bootstrap/js/popper.min.js') }}"></script>
@@ -36,5 +22,16 @@
 <script src="{{ asset('Admin/assets/node_modules/c3-master/c3.min.js') }}"></script>
 <!-- Chart JS -->
 <script src="{{ asset('Admin/js/dashboard1.js') }}"></script>
+<script src="{{ asset('Admin/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+
+<!-- Main JS -->
+<script src="{{ asset('Admin/assets/js/main.js') }}"></script>
+
+<!-- Page JS -->
+<script src="{{ asset('Admin/assets/js/dashboards-analytics.js') }}"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
 </body>
 </html>

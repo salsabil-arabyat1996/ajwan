@@ -72,4 +72,5 @@ class RegisterController extends Controller
             'phone'=> $data['phone'],
         ]);
     }
+
 }

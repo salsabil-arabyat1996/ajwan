@@ -33,4 +33,4 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar card-no-border">
+{{-- <body class="fix-header fix-sidebar card-no-border"> --}}

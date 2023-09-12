@@ -1,6 +1,7 @@
-@extends('Admin.layouts.App')
+@extends('Admin.layoute.App')
 @section('content')
-<div class="container" style="height: 160vh"  >
+
+<div class="container" style="height: 200vh"  >
     <div class="row align-items-start" style="margin-top: 20px"  >
         <div class="col">
        <a  class="btn btn-primary" href="{{ route('course.index') }}">Back</a>
@@ -13,9 +14,6 @@
             @foreach ($errors->all() as $item)
             <li> {{ $item }}</li>
             @endforeach
-
-
-
           </ul>
       </div>
   @endif
@@ -28,6 +26,12 @@
   <input type="text"
     class="form-control" name="title"  >
 </div>
+<div class="mb-3">
+  <label for="">teacher Name:</label>
+<input type="text"
+  class="form-control" name="teacher_name"  >
+</div>
+
 <div class="mb-3">
     <label for="">description:</label>
   <textarea class="form-control" name="description"   rows="3"></textarea>
@@ -56,7 +60,7 @@
 
   <div class="mb-3">
     <label for="">Duration of the course:</label>
-    <input type="text"
+    <input type="date"
       class="form-control" name="time">
   </div>
 
@@ -71,6 +75,15 @@
     <option value="0"> Visible</option>
     <option value="1">Hidden</option>
 </select>
+</div>
+
+<div class="mb-3">
+  <label for="category_id">category:</label>
+  <select name="category_id" id="category_id" class="form-control">
+      @foreach ($categories as $id => $name)
+          <option value="{{ $id }}">{{ $name }}</option>
+      @endforeach
+  </select>
 </div>
 
 <div class="mb-3">
