@@ -1,6 +1,67 @@
 @extends('Admin.layouts.App')
 @section('content')
 
+<style>
+    /* Sidebar dropdown menu */
+.nav.flex-column.sub-menu {
+    padding-left: 20px; /* Adjust the left padding as needed */
+}
+
+.nav-item {
+    position: relative;
+}
+
+/* Style the dropdown trigger */
+.nav-item a.nav-link i.menu-arrow::before {
+    content: '\25B8'; /* Right-pointing triangle */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right spacing as needed */
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+}
+
+/* Rotate the dropdown trigger arrow when expanded */
+.nav-item a.nav-link[aria-expanded="true"] i.menu-arrow::before {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Style the dropdown items */
+.nav-item .nav-link {
+    padding: 5px 0;
+    color: #555; /* Text color */
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+/* Hover effect for dropdown items */
+.nav-item .nav-link:hover {
+    color: #007bff; /* Highlight color on hover */
+}
+
+/* Style the parent item (Category) */
+.nav-item > a.nav-link {
+    padding: 10px 20px; /* Adjust the padding as needed */
+    font-weight: bold;
+}
+
+/* Add a border to separate dropdown items */
+.nav-item .nav-link:not(:last-child) {
+    border-bottom: 1px solid #ddd; /* Border color */
+}
+
+/* Style the top-level sidebar links (Dashboard, Profile, etc.) */
+.nav-item > a.nav-link i.menu-arrow {
+    display: none; /* Hide the arrow for top-level items */
+}
+
+/* Adjust the arrow position for top-level items */
+.nav-item > a.nav-link span.menu-title {
+    padding-left: 15px; /* Adjust the left spacing as needed */
+}
+
+    </style>
 <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -38,7 +99,7 @@
                          <!-- Light Logo text -->
                          <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
                 </div>
-             
+
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
@@ -96,8 +157,26 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="mdi mdi-circle-outline menu-icon"></i>
+                                <span class="menu-title">Category</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <!-- Dropdown menu -->
+                            <div class="collapse" id="ui-basic">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Add Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">View Category</a>
+                                    </li>
+                                    <!-- Add more dropdown items here if needed -->
+                                </ul>
+                            </div>
                         </li>
+
                         <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
