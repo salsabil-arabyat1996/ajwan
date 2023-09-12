@@ -1,6 +1,5 @@
 @extends('Admin.layouts.App')
 @section('content')
-<<<<<<< HEAD
 
 <style>
     /* Sidebar dropdown menu */
@@ -66,8 +65,6 @@
 <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-=======
->>>>>>> 0bd37bee5a883b9b046c57857f289bc062819ac9
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
@@ -81,25 +78,22 @@
                     <a class="navbar-brand" href="index.html">
                       <h1>Ajwan</h1>
                 </div>
-<<<<<<< HEAD
 
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-=======
->>>>>>> 0bd37bee5a883b9b046c57857f289bc062819ac9
                 <div class="navbar-collapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
-                        
+
                         <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
                         </li>
                     </ul>
-                 
+
                     <ul class="navbar-nav my-lg-0">
-                       
+
                         <li class="nav-item dropdown u-pro">
                             {{-- <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="" /> <span class="hidden-md-down">Mark Sanders &nbsp;</span> </a> --}}
                             <div  class=" py-4 px-lg-5 d-none d-lg-block"  >
@@ -121,7 +115,7 @@
                 </div>
             </nav>
         </header>
-      
+
         <aside class="left-sidebar">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
@@ -147,12 +141,9 @@
                                 </ul>
                             </div>
                         </li>
-<<<<<<< HEAD
 
                         <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
-=======
                         <li> <a class="waves-effect waves-dark" href="{{ route('course.index') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Courses</span></a>
->>>>>>> 0bd37bee5a883b9b046c57857f289bc062819ac9
                         </li>
                         <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
                         </li>
@@ -173,7 +164,7 @@
             <!-- End Sidebar scroll-->
         </aside>
         <div class="page-wrapper">
-        
+
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
@@ -384,5 +375,5 @@
                     <!-- End Feeds -->
                 </div>
             </div>
- 
+
 @endsection
